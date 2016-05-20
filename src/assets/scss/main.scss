@@ -1,7 +1,23 @@
 @charset "utf-8";
 
+// Typography
+@font-face {
+ font-weight: bold;
+ font-style: bold;
+ font-family: 'Campton';
+ src: url("../fonts/campton-bold/campton-bold.eot");
+ src: url("../fonts/campton-bold/campton-bold.eot?#iefix") format("embedded-opentype"), url("../fonts/campton-bold/campton-bold.woff") format("woff"), url("../fonts/codropsicons/codropsicons.ttf") format("truetype"), url("../fonts/codropsicons/codropsicons.svg#codropsicons") format("svg");
+}
+@font-face {
+ font-weight: normal;
+ font-style: normal;
+ font-family: 'Campton';
+ src: url("../fonts/campton-light/campton-light.eot");
+ src: url("../fonts/campton-light/campton-light.eot?#iefix") format("embedded-opentype"), url("../fonts/campton-light/campton-light.woff") format("woff"), url("../fonts/codropsicons/codropsicons.ttf") format("truetype"), url("../fonts/codropsicons/codropsicons.svg#codropsicons") format("svg");
+}
+
 // Our variables
-$base-font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+$base-font-family: "Campton", Helvetica, Arial, sans-serif;
 $base-font-size:   16px;
 $base-font-weight: 400;
 $small-font-size:  $base-font-size * 0.875;

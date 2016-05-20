@@ -3,7 +3,6 @@
 title: festiwall
 description: festiwall
 url: http://sergimiral.github.io
-baseurl: 
 
 # Used so Jekyll outputs the site correctly so Gulp can do what it wants
 source: src
