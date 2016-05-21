@@ -211,12 +211,16 @@ gulp.task('serve', () => {
     server: ['.tmp', 'dist']
   });
 
+  function doReload(done) {
+    reload();
+    done();
+  }
   // Watch various files for changes and do the needful
-  gulp.watch(['src/**/*.md', 'src/**/*.html', 'src/**/*.yml'], gulp.series('jekyll', reload));
+  gulp.watch(['src/**/*.md', 'src/**/*.html', 'src/**/*.yml'], gulp.series('jekyll', doReload));
   gulp.watch(['src/**/*.xml', 'src/**/*.txt'], gulp.series('jekyll'));
   gulp.watch('src/assets/javascript/**/*.js', gulp.series('scripts'));
   gulp.watch('src/assets/scss/**/*.scss', gulp.series('styles'));
-  gulp.watch('src/assets/images/**/*', reload);
+  gulp.watch('src/assets/images/**/*', doReload);
 });
 
 // 'gulp assets' -- cleans out your assets and rebuilds them
