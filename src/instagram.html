@@ -4,53 +4,50 @@ layout: default
 
 <div class="instagram">
 
-<h1>This is the instagram pulled gallery page</h1>
+  <h1>This is the instagram pulled gallery page</h1>
 
-<div id="instafeed"></div>
-<script src="https://cdn.lukej.me/instafeed.js/1.4.1/instafeed.min.js" charset="utf-8"></script>
-<!-- <script type="text/javascript">
+  <div id="instafeed"></div>
+  <button id="loadmore">Load More</button>
+  <script src="//cdn.lukej.me/instafeed.js/1.4.1/instafeed.min.js" charset="utf-8"></script>
+  <!-- <script>
+  $(window).on('scroll', function() {
+   var windowScrollTop = $(window).scrollTop();
+   var instafeedContainer = $("#instafeed");
+   var instafeedContainerInnerHeight = instafeedContainer.innerHeight();
+   var thresholdValue = 420;
+
+   console.log(instafeedContainerInnerHeight - windowScrollTop);
+
+   if(instafeedContainerInnerHeight - windowScrollTop <= thresholdValue) {
+     if (feed.hasNext()) {
+       feed.next();
+     }
+   }
+  });
+  </script> -->
+
+  <script type="text/javascript">
+  {% raw %}
+
+  var button = document.getElementById("loadmore");
+  button.addEventListener("click", function() {
+    feed.next();
+  });
+  
     var feed = new Instafeed({
-        get: 'user',
-        userId: 2077414878,
-        clientId: '0ce33c3b62064f6e80a03c325ba002b2',
-        accessToken: '2050575330.0ce33c3.97b6833818564d2cb0c89a30a2633b08',
-        limit: 4,
+      get: 'user',
+      userId: 2077414878,
+      accessToken: '2050575330.0ce33c3.97b6833818564d2cb0c89a30a2633b08',
+      limit: 5,
+      resolution: 'low_resolution',
+      template: '<div class="insta-wrap grid"><img src="{{image}}" /><a class="grid-link" href="{{link}}" target="_blank"></a></div>',
+
     });
+
     feed.run();
-</script> -->
-<script>
-{% raw %}
-var feedOnGallery = new Instafeed({
-  get: 'user',
-  userId: 2077414878,
-  clientId: '0ce33c3b62064f6e80a03c325ba002b2',
-  accessToken: '2050575330.0ce33c3.97b6833818564d2cb0c89a30a2633b08',
-  limit: 12,
-  sortBy: 'most-recent',
-  template: '<a href="{{link}}"><img src="{{image}}" /></a>',
-  resolution: 'low_resolution',
-  target: 'instafeed',
-  after: function () {
 
-  }
-});
-
-feedOnGallery.run();
-
-$(window).on('scroll', function () {
-  var windowScrollTop = $(window).scrollTop();
-  var instafeedContainer = $("#instafeed");
-  var instafeedContainerInnerHeight = instafeedContainer.innerHeight();
-  var thresholdValue = 520;
-
-  if (instafeedContainerInnerHeight - windowScrollTop <= thresholdValue) {
-      if (feedOnGallery.hasNext()) {
-          feedOnGallery.next();
-      }
-  }
-});
-{% endraw %}
-</script>
+  {% endraw %}
+  </script>
 
 
 
