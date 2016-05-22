@@ -28,21 +28,13 @@ Split pane hero
   padding: 10em 0em;
   font-size: 2em;
 }
-.half-content p{
-  position: absolute;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
-	width: 80%;
-	margin: 0;
-	text-align: center;
-}
+
 
 .hero-left{
-  background-color: tomato;
+  background-color: $grey-color-light;
 }
 .hero-right{
-  background-color: invert(tomato);
+  background-color: darken($grey-color-light, 10);
 }
 
 /*
@@ -60,7 +52,7 @@ Artists
 section.artists{
   display: flex;
   flex-direction: column;
-  padding: 2em 0em;
+  padding: 5em 0em;
   max-width: 800px;
   margin: 0 auto;
 }
@@ -107,11 +99,13 @@ Contact
  */
 
 section.contact{
-  background: whitesmoke;
+  background: darken($grey-color-light, 10);
 }
 .contact-content{
   padding: 5em 0em;
   text-align: center;
+  max-width: 600px;
+  margin: 0 auto;
 }
 
 /********************
