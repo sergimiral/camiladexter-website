@@ -4,20 +4,89 @@ layout: default
 
 <div class="home">
 
-  <section>
-    <h1>About + view pieces in <a href="{{ site.baseurl }}/instagram/">gallery page</a>)</h1>
+  <section class="hero">
+    <div class="half hero-left">
+      <div class="half-content">
+        <a href="{{ site.baseurl }}/instagram/">2015 EDITION</a>
+      </div>
+    </div>
+    <div class="half hero-right">
+      <div class="half-content">
+        <a href="#">2016 (SOON)</a></span>
+      </div>
+    </div>
   </section>
 
-  <section>
-    <h1>Artists: avatar, name + website</h1>
+
+
+  <section class="locations">
+    <div id="map"></div>
+    <script>
+      function initMap() {
+        var mapDiv = document.getElementById('map');
+        var map = new google.maps.Map(mapDiv, {
+          center: {lat: 44.540, lng: -78.546},
+          zoom: 8,
+          scrollwheel: false
+        });
+      }
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?callback=initMap"
+        async defer></script>
   </section>
 
-  <section>
-    <h1>Locations: custom google map with pointers</h1>
+
+  <section class="artists">
+        <div class="artist-row">
+          <img class="artist-avatar" src="http://placehold.it/400x400" alt="avatar">
+          <div class="artist-text">
+            <h2>Artist name</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            <a href="#">www.website.com</a>
+          </div>
+        </div>
+        <div class="artist-row">
+          <img class="artist-avatar" src="http://placehold.it/400x400" alt="avatar">
+          <div class="artist-text">
+            <h2>Artist name</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            <a href="#">www.website.com</a>
+          </div>
+        </div>
+        <div class="artist-row">
+          <img class="artist-avatar" src="http://placehold.it/400x400" alt="avatar">
+          <div class="artist-text">
+            <h2>Artist name</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            <a href="#">www.website.com</a>
+          </div>
+        </div>
+        <div class="artist-row">
+          <img class="artist-avatar" src="http://placehold.it/400x400" alt="avatar">
+          <div class="artist-text">
+            <h2>Artist name</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            <a href="#">www.website.com</a>
+          </div>
+        </div>
+        <div class="artist-row">
+          <img class="artist-avatar" src="http://placehold.it/400x400" alt="avatar">
+          <div class="artist-text">
+            <h2>Artist name</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            <a href="#">www.website.com</a>
+          </div>
+        </div>
+
   </section>
 
-  <section>
-    <h1>Contact: triggers typeform overlay</h1>
+
+  <section class="contact">
+    <div class="contact-content">
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quae autem natura suae primae institutionis oblita est?</p>
+      <a href="#">Contact form</a>
+      <p><small>Lorem ipsum dolor sit amet</small></p>
+    </div>
   </section>
 
   <!-- <h1 class="page-heading">Posts</h1>
@@ -34,5 +103,4 @@ layout: default
     {% endfor %}
   </ul> -->
 
-  <p class="rss-subscribe">subscribe <a href="{{ "/feed.xml" | prepend: site.baseurl }}">via RSS</a></p>
 </div>
