@@ -1,0 +1,15 @@
+/* Styles for homepage sections */
+
+
+/********************
+The Flexbox Magic.
+********************/
+
+body {
+  display: flex; /* Make the body element a flex container */
+  flex-direction: column; /* Change the flexbox axis from the default which is row*/
+  height: 100%; /* I needed this */
+  min-height: 100vh;  /* and this to make it work right */
+}
+
+.page-content {flex: 1 auto;} /* Make the main content area grow to take up leftover space. 'auto' was added as it apparently makes it compatible with IE 10.*/
