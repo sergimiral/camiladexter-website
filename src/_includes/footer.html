@@ -8,10 +8,38 @@
         <ul class="contact-list">
           <li>{{ site.title }}</li>
           <li><a href="mailto:{{ site.author.email }}">{{ site.author.email }}</a></li>
+
         </ul>
       </div>
 
       <div class="footer-col footer-col-2">
+        <ul class="navigation-list">
+          <li>
+            <a class="page-link" href="{{ site.baseurl }}/about/">About</a>
+          </li>
+
+          <li>
+            <a class="page-link overlay-trigger" data-overlay="overlay-contact" href="javascript:void(0)">Contact</a>
+          </li>
+        </ul>
+
+      </div>
+
+      <div class="footer-col footer-col-3">
+
+        <ul class="navigation-list">
+          <li>
+            <a class="page-link" href="{{ site.baseurl }}/about/">About</a>
+          </li>
+
+          <li>
+            <a class="page-link overlay-trigger" data-overlay="overlay-contact" href="javascript:void(0)">Contact</a>
+          </li>
+        </ul>
+
+      </div>
+
+      <div class="footer-col footer-col-4">
         <ul class="social-media-list">
           {% if site.author.github %}
           <li>
@@ -24,13 +52,6 @@
             {% include icon-twitter.html username=site.author.twitter %}
           </li>
           {% endif %}
-        </ul>
-      </div>
-
-      <div class="footer-col footer-col-3">
-        <ul class="description-rss-list">
-        <li>{{ site.description }}</li>
-        <li>subscribe <a href="{{ "/feed.xml" | prepend: site.baseurl }}">via RSS</a></li>
         </ul>
       </div>
     </div>

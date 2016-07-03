@@ -1,60 +1,124 @@
+/*---------------------------------------------
+Clippy Headings
+- Creates a scrolling cliprect effect on fixed headings
+----------------------------------------------*/
 
-var access_token = "12228466.31599a5.7e5fd8ae83094826b85eacfaad7dd185",
-	resolution = "thumbnail",
-	user_id = "2077414878",
-	hashtag = "festiwall2015",
-	last_url = "",
-	// HASHTAG URL - USE THIS URL FOR HASHTAG PICS
-	hashtag_url = "https://api.instagram.com/v1/tags/"+hashtag+"/media/recent?access_token="+access_token,
-	// USER URL - USE THIS URL FOR USER PICS
-	user_url = "https://api.instagram.com/v1/users/"+user_id+"/media/recent/?access_token="+access_token;
+(function($) {
+  var s,
+  clippy = {
+    settings: {
+      heading: $('.js-clippy'),
+    },
+    init: function() {
+      s = this.settings;
+      this.bindEvents();
+    },
+    bindEvents: function(){
+      $(window).on("load resize scroll", $.proxy(this.getClippy, this));
+    },
 
-function loadFeed(next_url){
-	var url = next_url;
-	$(function() {
-	    $.ajax({
-	    	type: "GET",
-	        dataType: "jsonp",
-	        cache: false,
-	        url: url,
+    getClippy: function(){
+        s.heading.each(function() {
+          var layerOffset = $(this).closest('article, section').offset(),
+              containerOffset = layerOffset.top - $(window).scrollTop(),
+              clippy = containerOffset - $(this).css("top").replace(/[^-\d\.]/g, '') - $(this).css("margin-top").replace(/[^-\d\.]/g, '');
+          $(this).css('clip', 'rect('+ clippy +'px, auto, auto, auto)');
+        });
+    },
+  };
+   clippy.init();
+})(jQuery);
 
-	        success: function(data) {
-		  		next_url = data.pagination.next_url;
-		  		var count = 20;
-	            for (var i = 0; i < count; i++) {
-						if (typeof data.data[i] !== 'undefined') {
-						//console.log("id: " + data.data[i].id);
-							$("#instagram").append("<div class='instagram-wrap' id='pic-" + data.data[i].id + "'><a target='_blank' href='" + data.data[i].link + "'><img class='instagram-image' src='" + data.data[i].images.low_resolution.url +"' /></a></div>"
-						);
-					}
-	      		}
 
-		  		console.log("next_url: " + next_url);
-		  		$("#showMore").hide();
-		  		if (typeof next_url === 'undefined' || next_url.length < 10 ) {
-			  		console.log("NO MORE");
-			  		$("#showMore").hide();
-			  		$("#more").attr("next_url", "");
-		  		} else {
-			        //set button value
-			        console.log("displaying more");
-			        $("#showMore").show();
-			        $("#more").attr("next_url", next_url);
-			        last_url = next_url;
-	      		}
-	        }
-	    });
+
+/*
+Header animation on scroll
+ */
+
+$(document).ready(function() {
+	var s = $(".site-header");
+	var pos = s.position();
+	$(window).scroll(function() {
+		var windowpos = $(window).scrollTop();
+		if (windowpos >= pos.top & windowpos >=100) {
+			s.addClass("small-header");
+		} else {
+			s.removeClass("small-header");
+		}
 	});
-}
-
-//CALL THE SCRIPT TO START...
-$( document ).ready(function() {
-	//APPEND LOAD MORE BUTTON TO THE BODY...
-	$("#more" ).click(function() {
-		var next_url = $(this).attr('next_url');
-		loadFeed(next_url);
-		return false;
-	});
-	//start your engines
-	loadFeed(user_url);
 });
+
+
+( function($) {
+	/**
+	 * Our trigger event for opening the overlay. This class
+	 * should exist on the overlay trigger, as well as an
+	 * attribute (data-overlay) to adentify the overlay to open.
+	*/
+	$( '.overlay-trigger' ).on( 'click', function( event ) {
+		event.preventDefault();
+
+		/**
+		 * Set the overlay variable based on the data provided
+		 * by the overlay trigger.
+		 */
+		var overlay = $( this ).data( 'overlay' );
+
+		/**
+		 * If the overlay variable is not defined, give a message
+		 * and return.
+		*/
+		if ( ! overlay ) {
+			console.log( 'You must provide the overlay id in the trigger. (data-overlay="overlay-id").' );
+			return;
+		}
+
+		/**
+		 * If we've made it this far, we should have the data
+		 * needed to open a overlay. Here we set the id variable
+		 * based on overlay variable.
+		 */
+		var id = '#' + overlay;
+
+		/**
+		 * Let's open up the overlay and prevent the body from
+		 * scrolling, both by adding a simple class. The rest
+		 * is handled by CSS (awesome).
+		 */
+		$( id ).addClass( 'overlay-open' );
+		$( 'body' ).addClass( 'overlay-view' );
+
+		/**
+		 * When the overlay outer wrapper or `overlay-close`
+		 * triger is clicked, lets remove the classes from
+		 * the current overlay and body. Removal of these
+		 * classes restores the current state of the user
+		 * experience. Again, all handled by CSS (awesome).
+		 */
+		$( id ).on( 'click', function( event ) {
+			// Verify that only the outer wrapper was clicked.
+			if ( event.target.id == overlay ) {
+				$( id ).removeClass( 'overlay-open' );
+				$( 'body' ).removeClass( 'overlay-view' );
+			}
+		});
+
+		$( '.overlay-close' ).on( 'click', function( event ) {
+			$( id ).removeClass( 'overlay-open' );
+			$( 'body' ).removeClass( 'overlay-view' );
+		});
+
+		/**
+		 * Closes the overlay when the esc key is pressed. See
+		 * comment above on closing the overlay for more info
+		 * on how this is accomplished.
+		 */
+		$( document ).keyup( function( event ) {
+			// Verify that the esc key was pressed.
+			if ( event.keyCode == 27 ) {
+				$( id ).removeClass( 'overlay-open' );
+				$( 'body' ).removeClass( 'overlay-view' );
+			}
+		});
+	});
+}) (jQuery);

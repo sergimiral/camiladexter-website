@@ -1,10 +1,10 @@
 @charset "utf-8";
 
 // Typography
-@import url(https://fonts.googleapis.com/css?family=Montserrat:400,700);
+@import url(https://fonts.googleapis.com/css?family=Raleway:300,400,500,700);
 
 // Our variables
-$base-font-family: "Montserrat", Helvetica, Arial, sans-serif;
+$base-font-family: "Raleway", Helvetica, Arial, sans-serif;
 $base-font-size:   16px;
 $base-font-weight: 400;
 $small-font-size:  $base-font-size * 0.875;
@@ -20,11 +20,19 @@ $grey-color:       #828282;
 $grey-color-light: lighten($grey-color, 40%);
 $grey-color-dark:  darken($grey-color, 25%);
 
+$color-background: #FCF9F4;
+$color-background-darker: #EAE5E0;
+$color-red: #F05164;
+$color-purple: #614DA1;
+$color-blue: #4E85C2;
 // Width of the content area
 $content-width:    100%;
 
-$on-palm:          600px;
-$on-laptop:        960px;
+$on-palm:          580px;
+$on-tablet:        768px;
+$on-laptop:        1024px;
+$on-desktop:        1440px;
+$on-cinema:        1900px;
 
 
 
