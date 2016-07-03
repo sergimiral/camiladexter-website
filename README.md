@@ -1,1 +1,0 @@
-# festiwall-website
