@@ -1,9 +1,11 @@
 ---
+title: Tailor & Tales
+date: 2015-06-01 00:00:00 Z
+categories:
+- src
+- project
 layout: post
-date: 2015-06-01
-title:  Tailor & Tales
 pretitle: Designer & Stylist
-categories: project
 image: cover-tailorandtales-1.jpg
 ---
 
