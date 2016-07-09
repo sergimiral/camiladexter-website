@@ -1,7 +1,29 @@
+// RANDOM EMOJI IN URL
+//
+//
+// var URLEmoji = URLEmoji || {}
+//
+// URLEmoji.addEmojiToURL = function () {
+//   var urlemoji = ['😉', '😊', '😋', '😌', '😍', '😘', '😎']
+//
+//
+//   // Only Mac
+//   if (navigator.userAgent.indexOf('Mac OS X') !== -1) {
+//     var eNumber = Math.floor(Math.random() * (urlemoji.length - 1))
+//     window.location.hash = urlemoji[eNumber]
+//     // history.pushState({}, null, urlemoji[eNumber]);
+//   }
+//
+//
+// };
+//
+// URLEmoji.addEmojiToURL();
+
 /*---------------------------------------------
 Clippy Headings
 - Creates a scrolling cliprect effect on fixed headings
 ----------------------------------------------*/
+
 
 (function($) {
   var s,
@@ -27,6 +49,7 @@ Clippy Headings
     },
   };
    clippy.init();
+
 })(jQuery);
 
 
@@ -36,16 +59,29 @@ Header animation on scroll
  */
 
 $(document).ready(function() {
-	var s = $(".site-header");
-	var pos = s.position();
+	var header = $(".site-header");
+	var intro = $(".site-intro");
+	var tagline = $(".site-tagline");
+	var pos = header.position();
+	if($("#homepage-flag").length > 0) {
+
 	$(window).scroll(function() {
 		var windowpos = $(window).scrollTop();
-		if (windowpos >= pos.top & windowpos >=100) {
-			s.addClass("small-header");
-		} else {
-			s.removeClass("small-header");
+		if (windowpos >= pos.top & windowpos >=300) {
+			// header.addClass("small-header");
+			intro.addClass("site-intro-fadeout");
+			// tagline.addClass("site-tagline-fadeout");
+		}
+		else {
+			// header.removeClass("small-header");
+			intro.removeClass("site-intro-fadeout");
+			// tagline.removeClass("site-tagline-fadeout");
 		}
 	});
+}
+else {
+  intro.addClass("site-intro-fadeout");
+}
 });
 
 

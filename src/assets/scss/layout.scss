@@ -3,34 +3,50 @@
  */
 
 .site-header {
-    // border-top: 5px solid $grey-color-dark;
-    // border-bottom: 1px solid $grey-color-light;
-    // height: 70px;
     padding: 30px 40px;
     position: fixed;
     left: 0;
     right: 0;
-    background: $color-background;
-    z-index: 3;
     transition: all 0.4s ease;
+    @include media-query($on-tablet) {
+      position: absolute;
+    }
 }
 .site-header .wrapper{
   max-width: 1400px;
   margin: 0 auto;
 }
 
+
 .site-intro {
-    max-width: 600px;
-    text-align: center;
-    margin: 2em 0em;
+    max-width: 420px;
+    text-align: left;
+    z-index: 0;
+    transition: all 0.4s ease;
+    font-size: 0.9em;
+    line-height: 1.7em;
+    font-family: 'Libre Baskerville';
+    font-weight: 400;
+    opacity: 0.8;
+    a{
+      color: inherit;
+      font-weight: bolder;
+    }
+}
+
+.site-intro-fadeout {
+  opacity: 0;
+  transition: all 0.4s ease;
+}
+.site-tagline-fadeout {
+  opacity: 0;
+  transition: all 0.4s ease;
 }
 
 .small-header{
   padding: 0px 20px;
   transition: all 0.4s ease;
-  .site-intro {
-    opacity: 0;
-  }
+
   .site-hero {
     height: 150px;
   }
@@ -48,28 +64,86 @@
 .site-hero {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-end;
     height: 95vh;
-    align-items: center;
+    max-height: 800px;
+    align-items: flex-start;
     transition: all 0.2s ease;
     position: relative;
+    margin: 0 auto;
+    overflow: visible;
+    width: 100%;
+    // background: url('../images/hero-bg.jpg');
+    background-size: cover;
+    @include media-query($on-tablet) {
+      height: 400px;
+    }
 }
 
+.hero-image-wrapper{
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  img {
+    position: absolute;
+    top: -40px;
+    right: 0;
+    max-width: 600px;
+  }
+  @include media-query($on-tablet) {
+    display: none;
+  }
+}
 .site-title {
     margin-bottom: 0;
-    float: left;
     transition: all 0.2s ease;
     text-transform: uppercase;
     letter-spacing: 0.2em;
-    font-size: 1em;
+    font-size: 1.2em;
     font-weight: 500;
-    line-height: 56px;
+    // line-height: 56px;
+    opacity: 1;
+    transition: all 0.2s ease;
+    font-family: 'Raleway';
 
     &,
     &:visited {
-        color: $grey-color-dark;
+        color: $text-color;
+    }
+    &:hover {
+      opacity: 0.8;
+      text-decoration: none;
+      transition: all 0.2s ease;
     }
 }
+
+.site-tagline{
+  font-family: 'Playfair Display', serif;
+  color: $text-color;
+  margin-top: 5px;
+  margin-bottom: 50px;
+}
+.site-tagline:before {
+    content: '';
+    height: 3px;
+    width: 40px;
+    background: black;
+    position: absolute;
+    margin-top: 45px;
+    opacity: 0.1;
+}
+// .hero-image {
+//     position: absolute;
+//     top: 0;
+//     right: 0;
+//     z-index: -1;
+//     width: 100%;
+//     height: auto;
+// }
 
 .site-logo{
   height: 200px;
@@ -374,7 +448,7 @@
     width: 40px;
     height: 40px;
     position: absolute;
-    z-index: 9;
+    z-index: 9999;
     right: 0;
     margin: 20px 20px;
     display: flex;

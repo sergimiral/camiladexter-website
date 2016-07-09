@@ -10,7 +10,7 @@
   letter-spacing: -1px;
   font-size: 3em;
   line-height: 1;
-  margin-bottom: 0;
+  margin-bottom: 30px;
 
   @include media-query($on-laptop) {
     font-size: 2em;
@@ -60,9 +60,14 @@
 }
 
 .post-content, .post-header {
-    max-width: 700px;
+    max-width: 640px;
     margin: 0 auto;
     padding: 0em $spacing-unit;
+    margin-right: 7vw;
+}
+.post {
+  max-width: 1440px;
+    margin: 0 auto;
 }
 .post-header{
   margin-top: 2em;
@@ -123,6 +128,15 @@ article.post {
   color: rgba(0,0,0,0.4);
 }
 
+.post-content p {
+    font-weight: 400;
+    font-size: 1.1em;
+    line-height: 1.9;
+    margin-bottom: 2em;
+    color: #333333;
+    display: flex;
+    justify-content: center;
+}
 
 img.post-content-image{
   @include media-query($on-cinema) {
