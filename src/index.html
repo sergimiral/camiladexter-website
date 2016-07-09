@@ -1,32 +1,105 @@
----
-layout: default
----
-
 <div class="home">
   <span id="homepage-flag" style="display: none"></span>
 
 
   <div class="site-hero">
     <div class="hero-image-wrapper">
-      <img src="{{ site.baseurl }}/assets/images/header-top-right-bg.png" alt="">
+      <img src="/assets/images/header-top-right-bg.png" alt="">
     </div>
   </div>
 
   <div class="projects-wrapper">
 
 
-  {% for post in site.categories.project %}
+  
   <section class="mast">
-     <figure class="mast__bg" style="background-image:url({{ site.baseurl }}/assets/images/{{ post.image }})"></figure>
+     <figure class="mast__bg" style="background-image:url(/assets/images/cover-polarity.jpg)"></figure>
     <header class="mast__header  js-clippy">
-      <a href="{{ site.baseurl }}{{ post.url }}">
-        <h5 class="mast__pretitle">{{ post.pretitle }}</h5>
-        <h2 class="mast__title">{{ post.title }}</h2>
+      <a href="/src/project/2015/07/01/polarity/">
+        <h5 class="mast__pretitle">Fashion design</h5>
+        <h2 class="mast__title">Polarity</h2>
         <hr class="sep">
       </a>
     </header>
   </section>
-  {% endfor %}
+  
+  <section class="mast">
+     <figure class="mast__bg" style="background-image:url(/assets/images/cover-tailorandtales-1.jpg)"></figure>
+    <header class="mast__header  js-clippy">
+      <a href="/src/project/2015/06/01/tailorandtales-1/">
+        <h5 class="mast__pretitle">Designer & Stylist</h5>
+        <h2 class="mast__title">Tailor & Tales</h2>
+        <hr class="sep">
+      </a>
+    </header>
+  </section>
+  
+  <section class="mast">
+     <figure class="mast__bg" style="background-image:url(/assets/images/cover-tailorandtales-2.jpg)"></figure>
+    <header class="mast__header  js-clippy">
+      <a href="/src/project/2014/06/01/tailorandtales-2/">
+        <h5 class="mast__pretitle">Tailoring & Personal styling</h5>
+        <h2 class="mast__title">Tailor & Tales</h2>
+        <hr class="sep">
+      </a>
+    </header>
+  </section>
+  
+  <section class="mast">
+     <figure class="mast__bg" style="background-image:url(/assets/images/cover-agustinteboul.jpg)"></figure>
+    <header class="mast__header  js-clippy">
+      <a href="/src/project/2013/08/01/agustinteboul/">
+        <h5 class="mast__pretitle">fashion design internship</h5>
+        <h2 class="mast__title">Agustin Teboul</h2>
+        <hr class="sep">
+      </a>
+    </header>
+  </section>
+  
+  <section class="mast">
+     <figure class="mast__bg" style="background-image:url(/assets/images/cover-taste.jpg)"></figure>
+    <header class="mast__header  js-clippy">
+      <a href="/src/project/2013/05/01/taste/">
+        <h5 class="mast__pretitle">fashion design internship</h5>
+        <h2 class="mast__title">Ta-ste</h2>
+        <hr class="sep">
+      </a>
+    </header>
+  </section>
+  
+  <section class="mast">
+     <figure class="mast__bg" style="background-image:url(/assets/images/cover-fadeaway.jpg)"></figure>
+    <header class="mast__header  js-clippy">
+      <a href="/src/project/2013/02/01/fadeaway/">
+        <h5 class="mast__pretitle">conceptual fashion design</h5>
+        <h2 class="mast__title">Fadeaway</h2>
+        <hr class="sep">
+      </a>
+    </header>
+  </section>
+  
+  <section class="mast">
+     <figure class="mast__bg" style="background-image:url(/assets/images/cover-capitals.jpg)"></figure>
+    <header class="mast__header  js-clippy">
+      <a href="/src/project/2012/11/01/capitals/">
+        <h5 class="mast__pretitle">conceptual fashion design</h5>
+        <h2 class="mast__title">Capitals</h2>
+        <hr class="sep">
+      </a>
+    </header>
+  </section>
+  
+  <section class="mast">
+     <figure class="mast__bg" style="background-image:url(/assets/images/cover-doshaburi.jpg)"></figure>
+    <header class="mast__header  js-clippy">
+      <a href="/src/project/2011/12/31/doshaburi/">
+        <h5 class="mast__pretitle">fashion stylist</h5>
+        <h2 class="mast__title">Doshaburi</h2>
+        <hr class="sep">
+      </a>
+    </header>
+  </section>
+  
 
 
 
