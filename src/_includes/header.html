@@ -21,13 +21,24 @@
   <div class="wrapper">
 
     <a class="site-title" href="{{ site.baseurl }}/">{{ site.title }}</a>
-    <p class="site-tagline">{{ site.tagline }}</p>
+    <div class="site-icons">
+      <a href="#" data-tooltip=""><img src="{{ site.baseurl }}/assets/images/icon-mail.svg" alt=""></a>
+      <a href="#" data-tooltip=""><img src="{{ site.baseurl }}/assets/images/icon-ello.svg" alt=""></a>
+    </div>
+    <div class="project-anchors">
+      {% for post in site.categories.project %}
+      <a class="anchor-link" data-href="{{ post.url }}" href="#{{ post.slug }}" data-tooltip="{{ post.title }}">
+        <img src="{{ site.baseurl }}/assets/images/icon-square.svg" alt="">
+      </a>
+      {% endfor %}
+    </div>
+    <!-- <p class="site-tagline">{{ site.tagline }}</p> -->
     <!-- <p class="site-intro">Welcome to my personal page & design portfolio. Scroll down for a showcase of old projects I've worked on, or to know more about me you can…</p> -->
 
-    <p class="site-intro">
+    <!-- <p class="site-intro">
       I'm a fashion designer based in Berlin. You can check out some of my personal and professional projects below. If you have any further questions or just want to say hi go ahead and
 <a class="page-link overlay-trigger" data-overlay="overlay-contact" href="javascript:void(0)">drop me a line</a>.
-    </p>
+    </p> -->
 <!--
     <p><a href="#">Ello profile</a></p>
     <p><a href="#">Facebook page</a></p>

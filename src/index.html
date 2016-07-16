@@ -7,9 +7,10 @@ layout: default
 
 
   <div class="site-hero">
-    <div class="hero-image-wrapper">
+    <!-- <div class="hero-image-wrapper">
       <img src="{{ site.baseurl }}/assets/images/header-top-right-bg.png" alt="">
-    </div>
+    </div> -->
+    <p class="hero-text"><span>Hi, my name is Camila.</span> I'm a fashion designer &amp; stylist based in Berlin.</p>
   </div>
 
   <div class="projects-wrapper">
@@ -17,8 +18,9 @@ layout: default
 
   {% for post in site.categories.project %}
   <section class="mast">
+      <span class="anchor-helper" id="{{ post.slug }}"></span>
      <figure class="mast__bg" style="background-image:url({{ site.baseurl }}/assets/images/{{ post.image }})"></figure>
-    <header class="mast__header  js-clippy">
+    <header class="mast__header  js-clippy hidden">
       <a href="{{ site.baseurl }}{{ post.url }}">
         <h5 class="mast__pretitle">{{ post.pretitle }}</h5>
         <h2 class="mast__title">{{ post.title }}</h2>

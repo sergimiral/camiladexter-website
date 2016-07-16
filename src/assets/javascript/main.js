@@ -1,23 +1,44 @@
-// RANDOM EMOJI IN URL
-//
-//
-// var URLEmoji = URLEmoji || {}
-//
-// URLEmoji.addEmojiToURL = function () {
-//   var urlemoji = ['😉', '😊', '😋', '😌', '😍', '😘', '😎']
-//
-//
-//   // Only Mac
-//   if (navigator.userAgent.indexOf('Mac OS X') !== -1) {
-//     var eNumber = Math.floor(Math.random() * (urlemoji.length - 1))
-//     window.location.hash = urlemoji[eNumber]
-//     // history.pushState({}, null, urlemoji[eNumber]);
-//   }
-//
-//
-// };
-//
-// URLEmoji.addEmojiToURL();
+/*---------------------------------------------
+RANDOM EMOJI URL
+----------------------------------------------*/
+
+var URLEmoji = URLEmoji || {}
+
+URLEmoji.addEmojiToURL = function () {
+  var urlemoji = ['😉', '😊', '😋', '😌', '😍', '😘', '😎']
+
+
+  // Only Mac
+  if (navigator.userAgent.indexOf('Mac OS X') !== -1) {
+    var eNumber = Math.floor(Math.random() * (urlemoji.length - 1))
+    window.location.hash = urlemoji[eNumber]
+    // history.pushState({}, null, urlemoji[eNumber]);
+  }
+
+
+};
+
+URLEmoji.addEmojiToURL();
+
+
+/*---------------------------------------------
+SMOOTH SCROLLTO ANCHORS
+----------------------------------------------*/
+$(function() {
+  $('a[href*="#"]:not([href="#"])').click(function() {
+    if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
+      var target = $(this.hash);
+      target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+      if (target.length) {
+        $('html, body').animate({
+          scrollTop: target.offset().top
+        }, 1000);
+        return false;
+      }
+    }
+  });
+});
+
 
 /*---------------------------------------------
 Clippy Headings
@@ -46,6 +67,7 @@ Clippy Headings
               clippy = containerOffset - $(this).css("top").replace(/[^-\d\.]/g, '') - $(this).css("margin-top").replace(/[^-\d\.]/g, '');
           $(this).css('clip', 'rect('+ clippy +'px, auto, auto, auto)');
         });
+        $('.js-clippy').removeClass('hidden');
     },
   };
    clippy.init();
@@ -60,7 +82,9 @@ Header animation on scroll
 
 $(document).ready(function() {
 	var header = $(".site-header");
-	var intro = $(".site-intro");
+  var intro = $(".site-intro");
+  var herotxt = $(".hero-text");
+  var projectanchors = $(".project-anchors");
 	var tagline = $(".site-tagline");
 	var pos = header.position();
 	if($("#homepage-flag").length > 0) {
@@ -69,19 +93,38 @@ $(document).ready(function() {
 		var windowpos = $(window).scrollTop();
 		if (windowpos >= pos.top & windowpos >=300) {
 			// header.addClass("small-header");
-			intro.addClass("site-intro-fadeout");
+      herotxt.addClass("hero-text-fadeout");
 			// tagline.addClass("site-tagline-fadeout");
 		}
 		else {
 			// header.removeClass("small-header");
-			intro.removeClass("site-intro-fadeout");
+			herotxt.removeClass("hero-text-fadeout");
 			// tagline.removeClass("site-tagline-fadeout");
 		}
 	});
 }
 else {
-  intro.addClass("site-intro-fadeout");
+  intro.addClass("hero-text-fadeout");
+  // projectanchors.addClass("project-anchors-fadeout");
+  $("a[data-href]").each(function(){
+    var posthref = $(this).data("href")
+    $(this).attr("href", posthref);
+  });
 }
+});
+
+
+$(document).ready( function() {
+    var topOfOthDiv = $(".mast").first().offset().top;
+    topOfOthDiv = topOfOthDiv - 150;
+    $(window).scroll(function() {
+        if($(window).scrollTop() > topOfOthDiv) { //scrolled past the other div?
+            $(".site-header").addClass("light"); //reached the desired point -- show div
+        }
+        else {
+            $(".site-header").removeClass("light");
+        }
+    });
 });
 
 
