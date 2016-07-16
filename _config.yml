@@ -11,6 +11,7 @@ collections:
 tagline: Fashion Designer & Stylist
 description: Fashion Designer & Stylist based in Berlin
 url: http://sergimiral.github.io
+baseurl: http://sergimiral.github.io/camiladexter-website
 source: src
 destination: dist
 exclude:
