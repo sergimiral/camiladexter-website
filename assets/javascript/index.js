@@ -1,3 +1,5 @@
+'use strict';
+
 $(document).ready(function() {
   // -------------------------------------------------------------
   // # Some operations for the post page
@@ -225,3 +227,5 @@ $(document).ready( function() {
 		});
 	});
 }) (jQuery);
+
+//# sourceMappingURL=index.js.map
