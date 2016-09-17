@@ -1,3 +1,23 @@
+$(document).ready(function() {
+  // -------------------------------------------------------------
+  // # Some operations for the post page
+  // -------------------------------------------------------------
+  var theTags = $('p.post-tags').text(); // 1. get contents from p
+  var theTags = theTags+','; // 2. add comma, shitty I know
+  $('p.post-tags').text(""); // 3. clean original p element
+  $.each(theTags.split(",").slice(0, -1), function(index, item) { // 4. split & slice the comma sepparated string, and for each item do:
+    item = item.replace(/(^\s+|\s+$)/g, ''); // 5. remove spaces, shitty I know II
+    $('p.post-tags').append('<span>' + item + '</span>'); // 6. append as spans inside p
+  });
+
+  $('.post-content').children('p').children('img').addClass('post-content-image');
+  $(".post-content-image").parent().css('text-align', 'center');
+  $('.post-content-image').click(function() {
+    $(this).toggleClass('post-content-image-expanded');
+  });
+
+});
+
 /*---------------------------------------------
 RANDOM EMOJI URL
 ----------------------------------------------*/

@@ -17,6 +17,8 @@ Black a styling editorial for Doshaburi, a Barcelona based store run by Japanese
 
 ![ALT](/assets/images/img-doshaburi-2.png)
 
-Photographer Alba Casado
+Photographer: Alba Casado
+
 Model: Florencia Ravelli
+
 Clothing: Doshaburi
