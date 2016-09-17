@@ -13,8 +13,6 @@ description: Fashion Designer & Stylist based in Berlin
 url: http://sergimiral.github.io
 source: src
 destination: dist
-exclude:
-- assets
 author:
   name: Sergi Miral
   email: sergimiral@gmail.com
