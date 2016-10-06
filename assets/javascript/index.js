@@ -1,6 +1,100 @@
 'use strict';
 
+jQuery(document).ready(function ($) {
+
+  var sliderWrapperWidth = $('#sliderWrapper').width();
+	var slideCount = $('#slider ul li').length;
+	var slideWidth = $('#slider ul li').width();
+	var slideHeight = $('#slider ul li').height();
+	var sliderUlWidth = slideCount * slideWidth;
+
+
+  	$('#slider ul li').css({ width: sliderWrapperWidth });
+	  $('#slider ul').css({ marginLeft: - sliderWrapperWidth });
+    $('#slider ul li:last-child').prependTo('#slider ul');
+
+    $(window).resize(function() {
+      $('#slider ul li').css({ width: sliderWrapperWidth });
+	    $('#slider ul').css({ marginLeft: - sliderWrapperWidth });
+    });
+
+    function moveLeft() {
+        $('#slider ul').animate({
+            left: + sliderWrapperWidth
+        }, 400, function () {
+            $('#slider ul li:last-child').prependTo('#slider ul');
+            $('#slider ul').css('left', '');
+        });
+    };
+
+    function moveRight() {
+        $('#slider ul').animate({
+            left: - sliderWrapperWidth
+        }, 400, function () {
+            $('#slider ul li:first-child').appendTo('#slider ul');
+            $('#slider ul').css('left', '');
+        });
+    };
+
+
+    $('a.control_prev').click(function () {
+        moveLeft();
+    });
+
+    $('a.control_next').click(function () {
+        moveRight();
+    });
+
+});
+
+
+// weirdness with perspecive hover fx ↓
+//
+// var sheet = $(".sheet");
+//
+// $(document).on("mousemove",function(e) {
+//   var ax = -($(window).innerWidth()/2- e.pageX)/50;
+//   var ay = ($(window).innerHeight()/2- e.pageY)/50;
+//   sheet.attr("style", "transform: rotateY("+ax+"deg) rotateX("+ay+"deg);-webkit-transform: rotateY("+ax+"deg) rotateX("+ay+"deg);-moz-transform: rotateY("+ax+"deg) rotateX("+ay+"deg)");
+// });
+
+
+// just to demo the transition-out by now…
+
+$('.viewAllButton').click(function() {
+  $('.projects-wrapper').addClass('fadeInProjects');
+  $('html, body').animate({
+        scrollTop: $(".projects-wrapper").offset().top -200
+    }, 600);
+    setTimeout(
+    function() {
+      $('body').css('overflow', 'visible');
+    }, 300);
+
+
+});
+
 $(document).ready(function() {
+//if it's not the homepage enable scroll again…
+if($("#homepage-flag").length > 0) {
+  $('body').css('overflow', 'hidden');
+}
+else {
+  $('body').css('overflow', 'auto');
+}
+});
+
+$(document).ready(function() {
+  //forget scroll history
+  if ('scrollRestoration' in history) {
+  history.scrollRestoration = 'manual';
+  }
+  //set scroll position to the top of the page.
+  window.scrollTo(0, 0);
+  window.addEventListener('unload', function(e) {
+  window.scrollTo(0, 0);
+
+});
   // -------------------------------------------------------------
   // # Some operations for the post page
   // -------------------------------------------------------------
@@ -48,6 +142,9 @@ SMOOTH SCROLLTO ANCHORS
 ----------------------------------------------*/
 $(function() {
   $('a[href*="#"]:not([href="#"])').click(function() {
+    $('body').css('overflow', 'visible'); /* TODO: <-- either fix this or remove those links from the homepage*/
+    $('.projects-wrapper').addClass('fadeInProjects'); /* TODO: <-- FIX THIS SHIT*/
+
     if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
       var target = $(this.hash);
       var mastHeight = $('.mast').height();
@@ -82,8 +179,8 @@ Clippy Headings
       s = this.settings;
       this.bindEvents();
     },
-    bindEvents: function(){
-      $(window).on("load resize scroll", $.proxy(this.getClippy, this));
+    bindEvents: function(){/* Add "scroll" also to enable clippy FX*/
+      $(window).on("load resize", $.proxy(this.getClippy, this));
     },
 
     getClippy: function(){
@@ -106,50 +203,52 @@ Clippy Headings
 Header animation on scroll
  */
 
-$(document).ready(function() {
-	var header = $(".site-header");
-  var intro = $(".site-intro");
-  var herotxt = $(".hero-text");
-  var projectanchors = $(".project-anchors");
-	var tagline = $(".site-tagline");
-	var pos = header.position();
-	if($("#homepage-flag").length > 0) {
-
-	$(window).scroll(function() {
-		var windowpos = $(window).scrollTop();
-		if (windowpos >= pos.top & windowpos >=300) {
-			// header.addClass("small-header");
-      herotxt.addClass("hero-text-fadeout");
-			// tagline.addClass("site-tagline-fadeout");
-		}
-		else {
-			// header.removeClass("small-header");
-			herotxt.removeClass("hero-text-fadeout");
-			// tagline.removeClass("site-tagline-fadeout");
-		}
-	});
-}
-else {
-  intro.addClass("hero-text-fadeout");
-  // projectanchors.addClass("project-anchors-fadeout");
-  $("a[data-href]").each(function(){
-    var posthref = $(this).data("href")
-    $(this).attr("href", posthref);
-  });
-}
-});
-
+// $(document).ready(function() {
+// 	var header = $(".site-header");
+//   var intro = $(".site-intro");
+//   var herotxt = $(".hero-text");
+//   var projectanchors = $(".project-anchors");
+// 	var tagline = $(".site-tagline");
+// 	var pos = header.position();
+// 	if($("#homepage-flag").length > 0) {
+//
+//   $('body').css('overflow', 'hidden');
+//
+// 	$(window).scroll(function() {
+// 		var windowpos = $(window).scrollTop();
+// 		if (windowpos >= pos.top & windowpos >=300) {
+// 			// header.addClass("small-header");
+//       herotxt.addClass("hero-text-fadeout");
+// 			// tagline.addClass("site-tagline-fadeout");
+// 		}
+// 		else {
+// 			// header.removeClass("small-header");
+// 			herotxt.removeClass("hero-text-fadeout");
+// 			// tagline.removeClass("site-tagline-fadeout");
+// 		}
+// 	});
+// }
+// else {
+//   intro.addClass("hero-text-fadeout");
+//   // projectanchors.addClass("project-anchors-fadeout");
+//   $("a[data-href]").each(function(){
+//     var posthref = $(this).data("href")
+//     $(this).attr("href", posthref);
+//   });
+// }
+// });
 
 $(document).ready( function() {
     var topOfOthDiv = $(".mast").first().offset().top;
     topOfOthDiv = topOfOthDiv - 150;
     $(window).scroll(function() {
-        if($(window).scrollTop() > topOfOthDiv) { //scrolled past the other div?
+        if($(window).scrollTop() > topOfOthDiv && window.innerWidth<=1900) { //scrolled past the other div + not in a bigass monitor
             $(".site-header").addClass("light"); //reached the desired point -- show div
         }
         else {
             $(".site-header").removeClass("light");
         }
+
     });
 });
 
